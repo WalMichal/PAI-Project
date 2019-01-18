@@ -44,7 +44,12 @@ class Routing
             'admin_delete_user' => [
                 'controller' => 'AdminController',
                 'action' => 'userDelete'
-            ]
+            ],
+            'try' => [
+        'controller' => 'TRYY',
+        'action' => 'fajno'
+    ]
+
         ];
     }
 

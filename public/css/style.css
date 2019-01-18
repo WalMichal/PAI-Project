@@ -10,11 +10,12 @@ h1 {
 
 body {
     height:800px;
+    width: 100%;
     padding-left:40px;
     background-color: white;
 }
 
-div {
+.position > div {
     width:150px;
     border:1px solid black;
     border-radius: 10px;
@@ -41,18 +42,53 @@ div {
 
 .relative {
     position:relative;
-    top:20px;
-    left:20px;
+    top:50px;
+    left:50px;
 }
 
 .absolute {
     position:absolute;
-    top:20px;
-    left:120px;
+    width: 100%;
+    top: 0;
+    left: 0;
 }
 
 .fixed {
     position:fixed;
     bottom:20px;
     right:20px;
+}
+
+ul {
+    list-style-type: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+     background-color: #111;
+}
+
+li a:hover {
+    text-decoration: none;
+    color: green;
+}
+
+.active {
+    background-color: #4CAF50;
 }

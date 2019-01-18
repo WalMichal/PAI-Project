@@ -27,4 +27,31 @@ class UserMapper
             return 'Error: ' . $e->getMessage();
         }
     }
+
+    public function getUsers()
+    {
+        try {
+            $stmt = $this->database->connect()->prepare('SELECT * FROM users WHERE email != :email;');
+            $stmt->bindParam(':email', $_SESSION['id'], PDO::PARAM_STR);
+            $stmt->execute();
+
+            $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $user;
+        }
+        catch(PDOException $e) {
+            die();
+        }
+    }
+
+    public function delete(int $id): void
+    {
+        try {
+            $stmt = $this->database->connect()->prepare('DELETE FROM users WHERE id = :id;');
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+        }
+        catch(PDOException $e) {
+            die();
+        }
+    }
 }

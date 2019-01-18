@@ -1,7 +1,7 @@
 <?php
 
 require_once('controllers/DefaultController.php');
-
+require_once('controllers/TRYY.php');
 class Routing
 {
     public $routes = [];
@@ -16,7 +16,12 @@ class Routing
             'login' => [
                 'controller' => 'DefaultController',
                 'action' => 'login'
+            ],
+            'try' => [
+                'controller' => 'TRYY',
+                'action' => 'fajno'
             ]
+
         ];
     }
 

@@ -1,0 +1,58 @@
+body {
+    font-family: Verdana;
+    font-size: 10pt;
+    margin-top: 100px !important;
+}
+
+h1 {
+    color: darkblue;
+}
+
+body {
+    height:800px;
+    padding-left:40px;
+    background-color: white;
+}
+
+div {
+    width:150px;
+    border:1px solid black;
+    border-radius: 10px;
+    font:bold 22px/100px Arial,Sans-Serif;
+    color:black;
+    text-align:center;
+}
+
+#turquise{ background-color: lightseagreen;}
+
+#blue{ background-color: dodgerblue;}
+
+#violet{ background-color: mediumorchid;}
+
+#orange{ background-color: darkorange;}
+
+#red{ background-color: tomato;}
+
+#yellow{ background-color: orange;}
+
+.static {
+    position:static;
+}
+
+.relative {
+    position:relative;
+    top:20px;
+    left:20px;
+}
+
+.absolute {
+    position:absolute;
+    top:20px;
+    left:120px;
+}
+
+.fixed {
+    position:fixed;
+    bottom:20px;
+    right:20px;
+}

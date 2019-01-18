@@ -10,6 +10,8 @@
     <div class="row">
         <h1 class="col-12">HOMEPAGE</h1>
         <p>
+            <a href="?page=try">Zaloguj</a>
+            <a href="?page=new">Zajerestruj</a>
             <?= $text ?>
         </p>
 

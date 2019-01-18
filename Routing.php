@@ -5,6 +5,7 @@ require_once 'controllers/UploadController.php';
 require_once 'controllers/PlayerController.php';
 require_once 'controllers/AdminController.php';
 require_once 'controllers/AdminController.php';
+require_once 'controllers/TRYY.php';
 
 class Routing
 {
@@ -46,9 +47,13 @@ class Routing
                 'action' => 'userDelete'
             ],
             'try' => [
-        'controller' => 'TRYY',
-        'action' => 'fajno'
-    ]
+                'controller' => 'TRYY',
+                'action' => 'fajno'
+            ],
+            'register' => [
+                'controller' => 'Default Controller',
+                'action' => 'register'
+            ]
 
         ];
     }
@@ -56,7 +61,7 @@ class Routing
     public function run()
     {
         $page = isset($_GET['page'])
-            && isset($this->routes[$_GET['page']]) ? $_GET['page'] : 'login';
+            && isset($this->routes[$_GET['page']]) ? $_GET['page'] : 'index';
 
         if ($this->routes[$page]) {
             $class = $this->routes[$page]['controller'];

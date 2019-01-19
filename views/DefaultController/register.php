@@ -92,20 +92,25 @@
             }
             else{
                     const apiUrl = "http://localhost:80";
-                    const idd = document.getElementById("inputNick").value;
+                    const inputNick = document.getElementById("inputNick").value;
                     const iddd = 2;
                 $.post({
-                    url : "http://localhost:80/pai/?page=dostanie",
+                    url : "http://localhost:80/pai/?page=validateNick",
                     type : "POST",
                     data : {
-                        id : iddd
+                        nickname : inputNick
                     },
+
                     success: function() {
                         alert('Selected user successfully deleted from database!');
                     }
 
-                });
+                }).done((res) => {
 
+                    //robimy pętlę po zwróconej kolekcji
+                    //dołączając do tabeli kolejne wiersze
+                    alert(res);
+                });
 
                 alert("Zgadzaja sie");
                 return true;

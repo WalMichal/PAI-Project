@@ -29,10 +29,10 @@ class AdminController extends AppController
 
     public function userDelete(): void
     {
-     /*   if (!isset($_POST['id'])) {
-            http_response_code(404);
-            return;
-        }*/
+         if (!isset($_POST['id'])) {
+             http_response_code(404);
+             return;
+         }
 
         $user = new UserMapper();
         $user->delete((int)$_POST['id']);

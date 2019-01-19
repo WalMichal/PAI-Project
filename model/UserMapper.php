@@ -56,12 +56,12 @@ class UserMapper
     }
 
         ###PROBA!!!!
-    public function getUserN(
-        string $email
+    public function getUserByNickname(
+        string $nickname
     ):User {
         try {
-            $stmt = $this->database->connect()->prepare('SELECT * FROM users WHERE nickname = :email;');
-            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt = $this->database->connect()->prepare('SELECT * FROM users WHERE nickname = :nickname;');
+            $stmt->bindParam(':nickname', $nickname, PDO::PARAM_STR);
             $stmt->execute();
 
             $user = $stmt->fetch(PDO::FETCH_ASSOC);

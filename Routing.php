@@ -5,6 +5,7 @@ require_once 'controllers/UploadController.php';
 require_once 'controllers/PlayerController.php';
 require_once 'controllers/AdminController.php';
 require_once 'controllers/AdminController.php';
+require_once 'controllers/ValidateController.php';
 require_once 'controllers/TRYY.php';
 
 class Routing
@@ -58,9 +59,9 @@ class Routing
                 'controller' => 'DefaultController',
                 'action' => 'logout'
             ],
-            'dostanie' => [
-                'controller' => 'AdminController',
-                'action' => 'userDelete'
+            'validateNick' => [
+                'controller' => 'ValidateController',
+                'action' => 'validateNick'
             ]
 
         ];

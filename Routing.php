@@ -51,8 +51,16 @@ class Routing
                 'action' => 'fajno'
             ],
             'register' => [
-                'controller' => 'Default Controller',
+                'controller' => 'DefaultController',
                 'action' => 'register'
+            ],
+            'logout' => [
+                'controller' => 'DefaultController',
+                'action' => 'logout'
+            ],
+            'dostanie' => [
+                'controller' => 'AdminController',
+                'action' => 'userDelete'
             ]
 
         ];

@@ -21,7 +21,7 @@ class UserMapper
             $stmt->execute();
 
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            return new User($user['name'], $user['surname'], $user['email'], $user['password']);
+            return new User($user['nickname'], $user['email'], $user['password']);
         }
         catch(PDOException $e) {
             return 'Error: ' . $e->getMessage();
@@ -52,6 +52,23 @@ class UserMapper
         }
         catch(PDOException $e) {
             die();
+        }
+    }
+
+        ###PROBA!!!!
+    public function getUserN(
+        string $email
+    ):User {
+        try {
+            $stmt = $this->database->connect()->prepare('SELECT * FROM users WHERE nickname = :email;');
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            return new User($user['nickname'], $user['email'], $user['password']);
+        }
+        catch(PDOException $e) {
+            return 'Error: ' . $e->getMessage();
         }
     }
 }

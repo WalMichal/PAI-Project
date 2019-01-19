@@ -24,4 +24,16 @@ class TRYY extends AppController
     {
         $this->render('fajno');
     }
+    public function dostanie()
+    {
+        if($this->isPost()){
+            $user = new UserMapper();
+            $user->getUserN($_POST['id']);
+            if(empty($user['nickname'])){
+                echo 'okkkkkk';
+            }
+            else
+                echo "NIEEE";
+        }
+    }
 }

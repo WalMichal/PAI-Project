@@ -7,6 +7,7 @@ class AppController
     public function __construct()
     {
         $this->request = strtolower($_SERVER['REQUEST_METHOD']);
+        session_start();
     }
 
     public function isGet()

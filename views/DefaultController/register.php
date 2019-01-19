@@ -93,15 +93,17 @@
             else{
                     const apiUrl = "http://localhost:80";
                     const idd = document.getElementById("inputNick").value;
-                $.ajax({
-                    url : apiUrl + '/pai/?page=dostanie',
-                    method : "POST",
+                    const iddd = 2;
+                $.post({
+                    url : "http://localhost:80/pai/?page=dostanie",
+                    type : "POST",
                     data : {
-                        id : idd
+                        id : iddd
                     },
                     success: function() {
                         alert('Selected user successfully deleted from database!');
                     }
+
                 });
 
 

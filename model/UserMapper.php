@@ -46,7 +46,7 @@ class UserMapper
     public function delete(int $id): void
     {
         try {
-            $stmt = $this->database->connect()->prepare('DELETE FROM users WHERE id = :id;');
+            $stmt = $this->database->connect()->prepare('DELETE FROM users WHERE idUser = :id;');
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
         }

@@ -55,13 +55,13 @@ class Routing
                 'controller' => 'DefaultController',
                 'action' => 'register'
             ],
-            'logout' => [
-                'controller' => 'DefaultController',
-                'action' => 'logout'
-            ],
             'validateNick' => [
                 'controller' => 'ValidateController',
                 'action' => 'validateNick'
+            ],
+            'validateEmail' => [
+                'controller' => 'ValidateController',
+                'action' => 'validateEmail'
             ]
 
         ];

@@ -39,7 +39,7 @@
                         <i class="material-icons md-48">lock</i>
                     </label>
                     <div class="col-sm-11">
-                        <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password(Range:8-20)" type="password" minlength="8" maxlength="20" required/>
+                        <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password(Range:8-20)" type="password" minlength="8" maxlength="20" onblur = "validatePass1()" required/>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -47,7 +47,7 @@
                         <i class="material-icons md-48">lock</i>
                     </label>
                     <div class="col-sm-11">
-                        <input type="password" name="passwordrepeated" class="form-control" id="inputPasswordAgain" placeholder="Repeat password" type="password" minlength="8" maxlength="20" required/>
+                        <input type="password" name="passwordrepeated" class="form-control" id="inputPasswordAgain" placeholder="Repeat password" type="password" minlength="8" maxlength="20" onblur = "validatePass2()" required/>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -64,72 +64,135 @@
                     </div>
 
                 </div>
-                <p id="demo" onclick="passCheck()"><br>Click me to change my text color.</p>
                 <input type="submit"  value="Sign in" class= "btn btn-primary btn-lg float-right"  />
             </form>
         </div>
     </div>
 </div>
-<div class='pai-events'>test</div>
+
 
 <script>
-    function passCheck() {
-        document.getElementById("demo").style.color = "red";
-        document.getElementById("demo").innerHTML = "FUJU";
 
-        $(document).ready(function(){
-            $("p").click(function(){
-                $(this).hide();
-            });
-        });
+    var pass1 = false;
+    var pass2 = false;
+    function validatePass1(){
+        pass1 = true;
+        if(pass2){
+            validatePass();
+        }
+    }
+    function validatePass2() {
+        pass2 = true;
+        if(pass1){
+            validatePass();
 
+    }
+}
+
+        function validatePass(){
+
+        if(pass2){
+            if(document.getElementById("inputPassword").value!==document.getElementById("inputPasswordAgain").value) {
+
+                $("#inputPassword").css({
+                    'border' :' 4px solid red',
+                    'text-decoration' :' none',
+                    'color' : 'red'
+                });
+                $("#inputPasswordAgain").css({
+                    'border' :' 4px solid red',
+                    'text-decoration' :' none',
+                    'color' : 'red'
+                });
+
+            }
+            else {
+                $("#inputPassword").css({
+                    'border' :' 2px solid green',
+                    'text-decoration' :' none',
+                    'color' : 'black'
+                });
+                $("#inputPasswordAgain").css({
+                    'border' :' 2px solid green',
+                    'text-decoration' :' none',
+                    'color' : 'black'
+                });
+            }
+        }
 
     }
     function validate(){
-            if(document.getElementById("inputPassword").value!==document.getElementById("inputPasswordAgain").value) {
-                alert("Hasla się nie zgadzają!");
-                return false;
-            }
-            else{
-                    const apiUrl = "http://localhost:80";
+
+                    const apiUrl = "http://localhost:80/pai";
                     const inputNick = document.getElementById("inputNick").value;
-                    const iddd = 2;
+                    const inputEmail = document.getElementById("inputEmail").value;
+
+                    var option = false;
                 $.post({
-                    url : "http://localhost:80/pai/?page=validateNick",
-                    type : "POST",
-                    data : {
-                        nickname : inputNick
+                    url: apiUrl + "/?page=validateNick",
+                    type: "POST",
+                    data: {
+                        nickname: inputNick
                     },
+                    async: 'false',
 
-                    success: function() {
-                        alert('Selected user successfully deleted from database!');
-                    }
+                    success: function () {
 
-                }).done((res) => {
+                    },
+                    statusCode:
+                        {
+                            200: function () {
 
-                    //robimy pętlę po zwróconej kolekcji
-                    //dołączając do tabeli kolejne wiersze
-                    alert(res);
+                            },
+                            400: function () {
+                                if(!option){
+                                alert("User with this name already exist. Try change nickname :).");
+                                }
+                                option = true;
+                            },
+
+                            404: function () {
+                                alert("Serwer didn't response. Try it in a moment.");
+                            }
+                        }
+
+
                 });
 
-                alert("Zgadzaja sie");
-                return true;
+
+    $.post({
+        url: apiUrl + "/?page=validateEmail",
+        type: "POST",
+        data: {
+            email: inputEmail
+        },
+        async: 'false',
+
+        success: function () {
+
+        },
+        statusCode:
+            {
+                200: function () {
+
+                },
+                400: function () {
+                    if(!option) {
+                        alert("User with this email already exist. Use other email :).");
+                    }
+                    option = true;
+                },
+
+                404: function () {
+                    alert("Serwer didn't response. Try it in a moment.");
+                    returnValue = false;
+                }
             }
 
 
-    }
-    $(document).ready(function(){
-        $(".pai-events").on({
-            mouseenter: function(){
-                $(this).css("background-color", "lightgray");
-            },
-            mouseleave: function(){
-                $(this).css("background-color", "lightblue");
-            },
-            click: function(){
-                $(this).css("background-color", "yellow");
-            }
-        });
     });
+    }
+
+
 
 </script>

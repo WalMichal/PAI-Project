@@ -48,7 +48,7 @@ class DefaultController extends AppController
 
 
         $this->render('register');
-        if($this->isPost()  and isset($_POST['email'])and !empty($_POST['email'])){
+       /* if($this->isPost()  and isset($_POST['email'])and !empty($_POST['email'])){
             $email = $_POST['email'];
 
             $this->database = new Database();
@@ -68,6 +68,6 @@ class DefaultController extends AppController
             catch(PDOException $e) {
                 return 'Error: ' . $e->getMessage();
             }
-        }
+        }*/
     }
 }

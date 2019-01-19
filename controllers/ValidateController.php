@@ -20,18 +20,34 @@ class ValidateController extends AppController
         if(empty(($user->getUserByNickname($_POST['nickname']))->getNickname()))
         {
             http_response_code(200);
-
-            echo(json_encode(array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5)));
             return;
         }
-        else
+        else{
+
             http_response_code(400);
+
+            return;}
+
+    }
+    public function validateEmail()
+    {
+        if(!isset($_POST['email'])){
+            http_response_code(404);
             return;
+        }
 
 
-        ###wut?
-        #header('Content-type: application/json');
-        #http_response_code(200);
-        #echo $user->getUserByNickname($_POST['nickname']) ? json_encode($user->getUserByNickname($_POST['nickname'])) : '';
+        $user = new UserMapper();
+        if(empty(($user->getUser($_POST['email']))->getEmail()))
+        {
+            http_response_code(200);
+            return;
+        }
+        else{
+
+            http_response_code(400);
+
+            return;}
+
     }
 }

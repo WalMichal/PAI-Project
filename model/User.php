@@ -6,7 +6,9 @@ class User
     private $nickname;
     private $email;
     private $password;
-    private $role = "ROLE_USER";
+    private $role = 2;
+    #1-admin
+    #2-user
 
     public function __construct($nickname, $email, $password)
     {

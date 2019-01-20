@@ -16,7 +16,7 @@
                 <?php endforeach; ?>
             <?php endif; ?>
 
-            <form name="reg" action="?page=register" onsubmit="return validate()" method="POST" >
+            <form name="reg" action="?page=addUser" onsubmit="return validate()" method="POST" >
                 <div class="form-group row">
                     <label for="inputNick" class="col-sm-1 col-form-label">
                         <i class="material-icons md-48">account_box</i>

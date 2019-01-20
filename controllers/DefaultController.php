@@ -41,10 +41,21 @@ class DefaultController extends AppController
     }
     public function logout()
     {
+        session_unset();
+        session_destroy();
+        $this->render('index', ['text' => 'You have been successfully logged out!']);
 
     }
     public function register()
     {
+        #$message = "wrong answer";
+        #echo "<script type='text/javascript'>alert('$message');</script>";
+        if(isset($_SESSION['id']))
+        {
+            $url = "http://$_SERVER[HTTP_HOST]/pai/?page=logout";
+            header("Location: {$url}");
+
+        }
 
 
         $this->render('register');
@@ -69,5 +80,51 @@ class DefaultController extends AppController
                 return 'Error: ' . $e->getMessage();
             }
         }*/
+    }
+    public function addUser()
+    {
+        $url = "http://$_SERVER[HTTP_HOST]/pai/?page=register";
+
+
+        if(!isset($_POST['email']) or !isset($_POST['nickname']) or !isset($_POST['password']) ){
+        header("Location: {$url}");
+        $message = "wrong answer";
+        echo "<script type='text/javascript'>alert('$message');</script>";
+        exit();
+    }
+
+
+        $user = new UserMapper();
+        if(empty(($user->getUser($_POST['email']))->getEmail()))
+        {
+            if(empty(($user->getUserByNickname($_POST['nickname'])->getEmail())))
+            {
+                $newUs = new User($_POST['nickname'],$_POST['email'],hash( "sha256", $_POST['password']));
+                $user->saveUser($newUs);
+
+                $_SESSION['id'] = $_POST['email'];
+                $_SESSION['role'] = 2;
+                $url = "http://$_SERVER[HTTP_HOST]/pai/?page=index";
+                header("Location: {$url}");
+            }
+            else {
+                header("Location: {$url}");
+                $message = "wrong answer1";
+                echo "<script type='text/javascript'>alert('$message');</script>";
+            }
+
+        }
+        else{
+            header("Location: {$url}");
+            $message = "wrong answer";
+            echo "<script type='text/javascript'>alert('$message');</script>";
+        }
+
+
+
+
+
+        #to nie koniecznie
+        #$this->render('newUser');
     }
 }

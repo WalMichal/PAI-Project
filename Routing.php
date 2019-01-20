@@ -62,6 +62,10 @@ class Routing
             'validateEmail' => [
                 'controller' => 'ValidateController',
                 'action' => 'validateEmail'
+            ],
+            'addUser' => [
+                'controller' => 'DefaultController',
+                'action' => 'addUser'
             ]
 
         ];

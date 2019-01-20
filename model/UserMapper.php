@@ -71,4 +71,25 @@ class UserMapper
             return 'Error: ' . $e->getMessage();
         }
     }
+
+    /**
+     * @param $user User
+     *
+     */
+    public function saveUser($user){
+        try{
+            $stmt = $this->database->connect()->prepare('INSERT INTO users (idUser, nickname, password, email, idPermission) VALUES (NULL, :nickname, :password, :email, :role);');
+            $stmt->bindParam(':nickname', $user->getNickname(), PDO::PARAM_STR);
+            $stmt->bindParam(':password', $user->getPassword());
+            $stmt->bindParam(':email', $user->getEmail());
+            $stmt->bindParam(':role', $user->getRole());
+            $stmt->execute();
+
+
+        }
+
+        catch(PDOException $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
 }

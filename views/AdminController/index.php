@@ -21,8 +21,8 @@
             </thead>
             <tbody>
             <tr>
-                <td><?= $user->getName(); ?></td>
-                <td><?= $user->getSurname(); ?></td>
+                <td><?= $user->getNickname(); ?></td>
+                <td><?= $user->getNickname(); ?></td>
                 <td><?= $user->getEmail(); ?></td>
                 <td><?= $user->getRole(); ?></td>
                 <td>-</td>

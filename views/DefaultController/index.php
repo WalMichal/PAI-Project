@@ -13,6 +13,7 @@
             <a href="?page=login">Zaloguj</a>
             <a href="?page=register">Zajerestruj</a>
             <a href="?page=logout">Wyloguj</a>
+            <a href="?page=admin">Admin Panel</a>
             <?= $text ?>
         </p>
 

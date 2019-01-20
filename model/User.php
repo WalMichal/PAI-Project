@@ -6,15 +6,17 @@ class User
     private $nickname;
     private $email;
     private $password;
-    private $role = 2;
+    private $role;
     #1-admin
     #2-user
 
-    public function __construct($nickname, $email, $password)
+    public function __construct($nickname, $email, $password,$role = 2)
     {
         $this->nickname = $nickname;
         $this->email = $email;
         $this->password = $password;
+        $this->role = $role;
+
     }
 
     public function getNickname()

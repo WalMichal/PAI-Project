@@ -83,27 +83,7 @@ class DefaultController extends AppController
 
 
         $this->render('register');
-       /* if($this->isPost()  and isset($_POST['email'])and !empty($_POST['email'])){
-            $email = $_POST['email'];
 
-            $this->database = new Database();
-            try {
-                $stmt = $this->database->connect()->prepare('SELECT * FROM users WHERE User_mail = :email;');
-                $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-                $stmt->execute();
-                $user = $stmt->fetch(PDO::FETCH_ASSOC);
-                var_dump($user);
-                if(!empty($user['Login'])){
-                    echo "JEST TAKI PIZDO-i co tam goje?".$user['Login'];
-                }
-                else {
-                    echo "nie ma takiego-z takim mailem";
-                }
-            }
-            catch(PDOException $e) {
-                return 'Error: ' . $e->getMessage();
-            }
-        }*/
     }
     public function addUser()
     {

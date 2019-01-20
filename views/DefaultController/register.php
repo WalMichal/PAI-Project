@@ -16,7 +16,7 @@
                 <?php endforeach; ?>
             <?php endif; ?>
 
-            <form name="reg" action="?page=addUser" onsubmit="return validate()" method="POST" >
+            <form name="reg" action="?page=addUser" " method="POST" >
                 <div class="form-group row">
                     <label for="inputNick" class="col-sm-1 col-form-label">
                         <i class="material-icons md-48">account_box</i>
@@ -59,7 +59,8 @@
                     </div>
                     <div class="form-group row">
                         <label for="regulamin" class = "col-sm-11">
-                            Akceptuję regulamin.
+                            I accept the
+                            <a href="?page=statute">terms and conditions.</a>
                         </label>
                     </div>
 

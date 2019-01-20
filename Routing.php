@@ -66,6 +66,10 @@ class Routing
             'addUser' => [
                 'controller' => 'DefaultController',
                 'action' => 'addUser'
+            ],
+            'statute' => [
+                'controller' => 'DefaultController',
+                'action' => 'statute'
             ]
 
         ];

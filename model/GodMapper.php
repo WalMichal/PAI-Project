@@ -44,8 +44,35 @@ where g.idGod = :idGod;');
             die();
         }
     }
-    public function getComments()
+    public function getComments($idGod)
     {
+        try {
+            $stmt = $this->database->connect()->prepare('SELECT c.comment comm,u.nickname nick,c.timeCreated timee 
+FROM comment c 
+inner JOIN users u on c.idUser=u.idUser 
+where c.idGod = :idGod;');
+            $stmt->bindParam(':idGod', $idGod);
+            $stmt->execute();
 
+            $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $comments;
+        }
+        catch(PDOException $e) {
+            die();
+        }
+    }
+    public function saveComm($idGod,$idUser,$comment)
+    {
+        try {
+            $stmt = $this->database->connect()->prepare('INSERT INTO comment (idComment, timeCreated, comment, idGod, idUser) VALUES (NULL, NULL, :comment, :idGod, :idUser);');
+            $stmt->bindParam(':idGod', $idGod);
+            $stmt->bindParam(':idUser', $idUser);
+            $stmt->bindParam(':comment', $comment);
+            $stmt->execute();
+
+        }
+        catch(PDOException $e) {
+            die();
+        }
     }
 }

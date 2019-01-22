@@ -17,14 +17,19 @@ class GodController extends AppController
         else{
             $id = $_GET['id'];
         }
-
         $gm = new GodMapper();
+        if(isset($_GET['comment'])and isset($_SESSION['id']) and isset($_GET['com'])){
+            echo $_GET['comment'];
+            $gm->saveComm($_GET['id'],$_SESSION['id'],$_GET['comment']);
+        }
+
+
         $god = $gm ->getGods($id);
         foreach ($god as $item)
         {
             $g = $item;
         }
-
-        $this->render('index',['god' => $g]);
+        $com = $gm->getComments($id);
+        $this->render('index',['god' => $g,'com' =>$com]);
     }
 }

@@ -2,6 +2,7 @@
 
 require_once("AppController.php");
 require_once ("model/User.php");
+require_once ("model/GodMapper.php");
 require_once __DIR__.'/../Database.php';
 
 class DefaultController extends AppController
@@ -13,15 +14,17 @@ class DefaultController extends AppController
     }
 
     public function index()
-    {
-        $text = 'Hello there 👋';
+    {#views/godsImg/agni.jpg
 
-        $this->render('index', ['text' => $text]);
+
+        $gm = new GodMapper();
+        $gods = $gm->getGodsNames();
+        $this->render('index',['gods'=>$gods]);
+
     }
 
     public function login()
     {
-
 
         if(isset($_SESSION['id'])){
             $url = "http://$_SERVER[HTTP_HOST]/pai/?page=index";
@@ -66,9 +69,18 @@ class DefaultController extends AppController
     }
     public function logout()
     {
+        if(!isset($_SESSION['id']))
+        {
+            $url = "http://$_SERVER[HTTP_HOST]/pai/?page=index";
+            header("Location: {$url}");
+            exit();
+        }
         session_unset();
         session_destroy();
-        $this->render('index', ['text' => 'You have been successfully logged out!']);
+        $url = "http://$_SERVER[HTTP_HOST]/pai/?page=index";
+        header("Location: {$url}");
+        exit();
+        #$this->render('index');
 
     }
     public function register()

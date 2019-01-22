@@ -14,8 +14,7 @@ class AdminController extends AppController
     public function index(): void
     {
         $user = new UserMapper();
-        var_dump($_SESSION['id']);
-        var_dump($_SESSION['role']);
+
         if(!isset($_SESSION['id']) or $_SESSION['role']!=='1')
         {
 
@@ -26,7 +25,7 @@ class AdminController extends AppController
         }
         else
         {
-            echo "BRAWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWO!!!";
+
         }
         $this->render('index', ['user' => $user->getUser($_SESSION['id'])]);
     }
@@ -37,7 +36,7 @@ class AdminController extends AppController
 
         header('Content-type: application/json');
         http_response_code(200);
-
+        #var_dump($user->getUser());
         echo $user->getUsers() ? json_encode($user->getUsers()) : '';
     }
 

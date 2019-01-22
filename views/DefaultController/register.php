@@ -54,18 +54,18 @@
                     <label for="inputRegulamin" class="col-sm-1 col-form-label">
                         <i class="material-icons md-48">assignment</i>
                     </label>
-                    <div class="col-sm-1">
+                    <div class="col-sm-2">
                         <input type="checkbox" name="regulaminbox" class="form-control" id="inputRegulamin" placeholder="Accept regulamin""/>
                     </div>
-                    <div class="form-group row">
-                        <label for="regulamin" class = "col-sm-11">
-                            I accept the
-                            <a href="?page=statute">terms and conditions.</a>
+                    <div>
+                        <label for="regulamin" class = "col-sm-12">
+                            I accept the <a href="?page=statute">terms and conditions.</a>
                         </label>
                     </div>
 
                 </div>
-                <input type="submit"  value="Sign in" class= "btn btn-primary btn-lg float-right"  />
+                <a href = "?page=index" class = "btn btn-dark btn-primary btn-lg float-left">Return.</a>
+                <input type="submit"  value="Sign in." class= "btn btn-primary btn-lg float-right"  />
             </form>
         </div>
     </div>

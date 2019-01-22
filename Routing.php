@@ -1,11 +1,10 @@
 <?php
 
 require_once 'controllers/DefaultController.php';
-require_once 'controllers/UploadController.php';
-require_once 'controllers/PlayerController.php';
 require_once 'controllers/AdminController.php';
 require_once 'controllers/AdminController.php';
 require_once 'controllers/ValidateController.php';
+require_once 'controllers/GodController.php';
 require_once 'controllers/TRYY.php';
 
 class Routing
@@ -70,6 +69,10 @@ class Routing
             'statute' => [
                 'controller' => 'DefaultController',
                 'action' => 'statute'
+            ],
+            'god' =>[
+                'controller' => 'GodController',
+                'action' => 'index'
             ]
 
         ];

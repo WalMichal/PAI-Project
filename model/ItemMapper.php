@@ -31,7 +31,7 @@ class ItemMapper
             $stmt = $this->database->connect()->prepare('SELECT i.name iName,i.description iDescription, cl.name clName 
 FROM item i 
 inner JOIN class_type cl on cl.idClassType=i.idClassType 
-where g.idItem = :idItem;');
+where i.idItem = :idItem;');
             $stmt->bindParam(':idItem', $idItem);
             $stmt->execute();
 

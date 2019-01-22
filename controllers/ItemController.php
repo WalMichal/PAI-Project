@@ -1,7 +1,7 @@
 <?php
 require_once("AppController.php");
 require_once ("model/ItemMapper.php");
-class GodController extends AppController
+class ItemController extends AppController
 {
 
     public function __construct()
@@ -19,12 +19,19 @@ class GodController extends AppController
         }
 
         $gm = new ItemMapper();
-        $god = $gm ->getItems($id);
-        foreach ($god as $item)
+        $Item = $gm ->getItems($id);
+        $i=null;
+        foreach ($Item as $item)
         {
-            $g = $item;
+            $i = $item;
         }
 
-        $this->render('index',['god' => $g]);
+        $this->render('index',['item' => $i]);
+    }
+    public function items()
+    {
+        $im = new ItemMapper();
+        $items = $im->getItemNames();
+        $this->render('items',['items'=>$items]);
     }
 }

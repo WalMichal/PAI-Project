@@ -5,6 +5,7 @@ require_once 'controllers/AdminController.php';
 require_once 'controllers/AdminController.php';
 require_once 'controllers/ValidateController.php';
 require_once 'controllers/GodController.php';
+require_once 'controllers/ItemController.php';
 require_once 'controllers/TRYY.php';
 
 class Routing
@@ -73,8 +74,15 @@ class Routing
             'god' =>[
                 'controller' => 'GodController',
                 'action' => 'index'
+            ],
+            'item' =>[
+                'controller' => 'ItemController',
+                'action' => 'index'
+            ],
+            'items' =>[
+                'controller' => 'ItemController',
+                'action' => 'items'
             ]
-
         ];
     }
 

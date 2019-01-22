@@ -1,6 +1,6 @@
 <?php
 require_once("AppController.php");
-require_once ("model/GodMapper.php");
+require_once ("model/ItemMapper.php");
 class GodController extends AppController
 {
 
@@ -18,8 +18,8 @@ class GodController extends AppController
             $id = $_GET['id'];
         }
 
-        $gm = new GodMapper();
-        $god = $gm ->getGods($id);
+        $gm = new ItemMapper();
+        $god = $gm ->getItems($id);
         foreach ($god as $item)
         {
             $g = $item;

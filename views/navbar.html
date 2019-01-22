@@ -1,27 +1,48 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
-    <a class="navbar-brand abs" href="#">Navbar 1</a>
+    <a class="navbar-brand abs" href="?page=index">SMITE</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="navbar-collapse collapse" id="collapsingNavbar">
         <ul class="navbar-nav">
+            <?php if($_GET['page']=='index'){?>
             <li class="nav-item active">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="#">Items</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Codeply</a>
+            <?php } else { ?>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Gods</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#myAlert" data-toggle="collapse">Link</a>
-            </li>
+            <?php } ?>
         </ul>
         <ul class="navbar-nav ml-auto">
+            <?php if(!isset($_SESSION['role'])){?>
             <li class="nav-item">
-                <a class="nav-link" href="" data-target="#myModal" data-toggle="modal">About</a>
+                <a class="nav-link" href="?page=login" data-target="#myModal" data-toggle="modal">Zaloguj</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="" data-target="#myModal" data-toggle="modal">About1</a>
+                <a class="nav-link" href="?page=register" data-target="#myModal" data-toggle="modal">Zarejestruj</a>
             </li>
+            <?php } ?>
+            <?php if(isset($_SESSION['role']) and $_SESSION['role']!=='1'){?>
+            <li class="nav-item">
+                <a class="nav-link" href="?page=option" data-target="#myModal" data-toggle="modal">Options</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="?page=logout" data-target="#myModal" data-toggle="modal">Log out</a>
+            </li>
+            <?php } ?>
+            <?php if(isset($_SESSION['role']) and $_SESSION['role']==='1'){?>
+            <li class="nav-item">
+                <a class="nav-link" href="?page=admin" data-target="#myModal" data-toggle="modal">Admin Panel</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="?page=option" data-target="#myModal" data-toggle="modal">Options</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="?page=logout" data-target="#myModal" data-toggle="modal">Log out</a>
+            </li>
+            <?php } ?>
         </ul>
     </div>
 </nav>

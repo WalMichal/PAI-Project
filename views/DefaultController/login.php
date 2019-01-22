@@ -33,6 +33,7 @@
                         <input type="password" name="password" class="form-control" id="inputPassword" placeholder="password" type="password" required/>
                     </div>
                 </div>
+                <a href = "?page=index" class = "btn btn-dark btn-primary btn-lg float-left">Return.</a>
                 <input type="submit" value="Sign in" class="btn btn-primary btn-lg float-right" />
             </form>
         </div>

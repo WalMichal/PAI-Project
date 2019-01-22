@@ -24,10 +24,17 @@ class GodMapper
             die();
         }
     }
-    public function getGods()
+    public function getGods($idGod)
     {
         try {
-            $stmt = $this->database->connect()->prepare('SELECT * FROM god;');
+            $stmt = $this->database->connect()->prepare('SELECT g.name godName,g.description godDescription, r.name rName,m.name mName,com.name comName,cl.name clName 
+FROM god g 
+inner JOIN class_type cl on cl.idClassType=g.idClassType 
+inner JOIN combat_type com on com.idCombatType=g.idCombatType 
+INNER JOIN mythology m on m.idMythology=g.idMythology 
+inner join role r on r.idRole=g.idRole
+where g.idGod = :idGod;');
+            $stmt->bindParam(':idGod', $idGod);
             $stmt->execute();
 
             $gods = $stmt->fetchAll(PDO::FETCH_ASSOC);
